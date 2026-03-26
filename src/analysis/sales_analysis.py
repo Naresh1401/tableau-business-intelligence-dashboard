@@ -106,7 +106,7 @@ def profit_margin_analysis(df):
     ).round(4)
 
     margin_by_discount = df.groupby(
-        pd.cut(df["discount_pct"], bins=[0, 0.05, 0.10, 0.20, 0.30, 1.0],
+        pd.cut(df["discount_pct"], bins=[-0.01, 0.05, 0.10, 0.20, 0.30, 1.0],
                labels=["0-5%", "5-10%", "10-20%", "20-30%", "30%+"], right=True)
     ).agg(
         avg_margin=("profit_margin", "mean"),
